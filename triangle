@@ -1,0 +1,19 @@
+def heron(x, z, y):
+    half_p = (x + z + y) / 2
+    return (half_p * (half_p - x) * (half_p - z) * (half_p - y)) ** 0.5
+
+
+max_square = 0
+numbers = [int(i) for i in input().split()]
+n = len(numbers)
+for i in range(n):
+    x = numbers[i]
+    for j in range(n):
+        z = numbers[j]
+        for k in range(n):
+            y = numbers[k]
+            if (x + z > y) and (x + y > z) and (z + y > x) and (i != j != k):
+                if heron(x, z, y) > max_square:
+                    max_square = heron(x, z, y)
+print(max_square)
+print('triangle')
